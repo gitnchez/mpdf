@@ -6384,7 +6384,7 @@ class mPDF
 			$ipaddingL = $this->blk[$this->blklvl]['padding_left'];
 			$ipaddingR = $this->blk[$this->blklvl]['padding_right'];
 			$paddingL = ($ipaddingL * _MPDFK);
-			$paddingR = ($ipaddingR * _MPDFK);
+			$paddingR = ((float)$ipaddingR * _MPDFK);
 			$this->cMarginL = $this->blk[$this->blklvl]['border_left']['w'];
 			$this->cMarginR = $this->blk[$this->blklvl]['border_right']['w'];
 
@@ -27176,7 +27176,7 @@ class mPDF
 
 		/* -- ANNOTATIONS -- */
 		// Update Annotations
-		if (count($this->PageAnnots)) {
+		if (count((array)$this->PageAnnots)) {
 			$newarr = array();
 			foreach ($this->PageAnnots as $p => $anno) {
 				if ($p >= $start_page && $p <= $end_page) {
@@ -27262,7 +27262,7 @@ class mPDF
 		/* -- END BOOKMARKS -- */
 
 		// Update Page Links
-		if (count($this->PageLinks)) {
+		if (count((array)$this->PageLinks)) {
 			$newarr = array();
 			foreach ($this->PageLinks as $i => $o) {
 				foreach ($this->PageLinks[$i] as $key => $pl) {
@@ -27367,7 +27367,7 @@ class mPDF
 
 		/* -- ANNOTATIONS -- */
 		// Update Annotations
-		if (count($this->PageAnnots)) {
+		if (count((array)$this->PageAnnots)) {
 			$newarr = array();
 			foreach ($this->PageAnnots as $p => $anno) {
 				if ($p > $end_page) {
@@ -30645,7 +30645,7 @@ class mPDF
 				$size *= $maxsize * 2;
 			}
 		} else
-			$size *= (25.4 / $this->dpi); //nothing == px
+			$size = (float)$size * (25.4 / (float)$this->dpi); //nothing == px
 
 		return $size;
 	}
