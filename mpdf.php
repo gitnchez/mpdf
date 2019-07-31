@@ -27053,7 +27053,7 @@ class mPDF
 		/* -- END BOOKMARKS -- */
 
 		// Update Page Links
-		if (count($this->PageLinks)) {
+		if ($this->PageLinks) {
 			$newarr = array();
 			foreach ($this->PageLinks as $i => $o) {
 				foreach ($this->PageLinks[$i] as $key => $pl) {
